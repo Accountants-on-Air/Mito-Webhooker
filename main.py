@@ -13,5 +13,5 @@ async def root(request: Request):
     target_id = data['event']['pulseId']
     id_ = data['event']['value']['linkedPulseIds'][0]['linkedPulseId']
     query = json.loads('{{\"connect_boards1\" : {{\"item_ids\" : {}}}}}'.format(target_id))
-    await func(board_id,id_,query)
+    #await func(board_id,id_,query)
     return JSONResponse(content=data)
