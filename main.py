@@ -1,13 +1,9 @@
-from fastapi import FastAPI, Path
-from pydantic import BaseModel
+from fastapi import FastAPI, Request
+from fastapi.responses import JSONResponse
 app = FastAPI()
-class Mito(BaseModel):
-	challenge: str
-@app.get("/")
-def index():
-	return {"mito":"First Data"}
-@app.post("/webhook")
-async def webhook(text: Mito):	
-	print(text.challenge)
-	return {'success',200}
 
+@app.post("/webhook")
+async def root(request: Request):
+    data = await request.json()
+    print(data)
+    return JSONResponse(content=data)
