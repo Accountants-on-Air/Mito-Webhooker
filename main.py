@@ -10,8 +10,8 @@ async def func(board_id,id_,query):
 @app.post("/webhook")
 async def root(request: Request):
     data = await request.json()
-    target_id = data['event']['pulseId']
-    id_ = data['event']['value']['linkedPulseIds'][0]['linkedPulseId']
-    query = json.loads('{{\"connect_boards1\" : {{\"item_ids\" : {}}}}}'.format(target_id))
+    # target_id = data['event']['pulseId']
+    # id_ = data['event']['value']['linkedPulseIds'][0]['linkedPulseId']
+    # query = json.loads('{{\"connect_boards1\" : {{\"item_ids\" : {}}}}}'.format(target_id))
     #await func(board_id,id_,query)
     return JSONResponse(content=data)
