@@ -8,6 +8,7 @@ class Mito(BaseModel):
 def index():
 	return {"mito":"First Data"}
 @app.post("/webhook")
-def webhook():
-	return'Success',200
+async def webhook(text: Mito):	
+    print(text.mito)
+    return {'success',200}
 
