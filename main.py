@@ -1,6 +1,5 @@
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
-from monday import MondayClient
 import json
 app = FastAPI()
 @app.post("/webhook")
