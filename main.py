@@ -1,13 +1,13 @@
-from flask import Flask, request,abort
-
-app = Flask(__name__)
-
-@app.route('/webhook',methods=['POST'])
+from fastapi import FastAPI, Path
+from pydantic import BaseModel
+app = FastAPI()
+person = {1: {"mito":"Webhook"}}
+class Mito(BaseModel):
+	mito: str
+@app.get("/")
+def index():
+	return {"mito":"First Data"}
+@app.post("/webhook")
 def webhook():
-    if request.method == 'POST':
-        print(request.json)
-        return'Success',200
-    else:
-        abort(400)
-if __name__ == '__main__':
-    app.run()
+	return'Success',200
+
