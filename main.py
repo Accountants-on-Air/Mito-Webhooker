@@ -9,6 +9,6 @@ def index():
 	return {"mito":"First Data"}
 @app.post("/webhook")
 async def webhook(text: Mito):	
-    print(text.mito)
-    return {'success',200}
+	print(text.mito)
+	return {'success',200}
 
