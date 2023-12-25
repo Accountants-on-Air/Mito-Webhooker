@@ -5,5 +5,4 @@ def executer(data): #Master Database
     client.items.change_multiple_column_values(5015701381,data['event']['value']['linkedPulseIds'][0]['linkedPulseId'],json.loads('{{\"connect_boards1\" : {{\"item_ids\" : {}}}}}'.format([data['event']['pulseId']])))
 
 def executer2(data): #Tax Prep Assignments
-    #client.items.change_multiple_column_values(1604758265,)
-    print(data)
+    client.items.change_multiple_column_values(1604758265,data['event']['value']['linkedPulseIds'][0]['linkedPulseId'],json.loads('{{\"connect_boards8\" : {{\"item_ids\" : {}}}}}'.format([data['event']['pulseId']])))
