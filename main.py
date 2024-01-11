@@ -16,7 +16,7 @@ async def root(request: Request):
     executer2(data)
     return JSONResponse(content=data)
 
-@app.post("/webhook3") #Tax Prep Assignmetns
+@app.post("/webhook3") #Dwidar Stamp HR
 async def root(request: Request):
     data = await request.json()
     print(data)
