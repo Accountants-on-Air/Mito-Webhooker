@@ -5,7 +5,8 @@ def executer(data): #Master Database
     ITEM = client.items.fetch_items_by_id(data['event']['value']['linkedPulseIds'][0]['linkedPulseId'])
     PULSES_DICT = [json.loads(i['value'])['linkedPulseIds'] for i in ITEM['data']['items'][0]['column_values'] if i['id']=='connect_boards1'][0]
     CONNECTION_IDS = [i['linkedPulseId'] for i in PULSES_DICT]
-    client.items.change_multiple_column_values(5015701381,data['event']['value']['linkedPulseIds'][0]['linkedPulseId'],json.loads('{{\"connect_boards1\" : {{\"item_ids\" : {}}}}}'.format(CONNECTION_IDS.append(data['event']['pulseId']))))
+    CONNECTION_IDS.append(data['event']['pulseId'])
+    client.items.change_multiple_column_values(5015701381,data['event']['value']['linkedPulseIds'][0]['linkedPulseId'],json.loads('{{\"connect_boards1\" : {{\"item_ids\" : {}}}}}'.format(CONNECTION_IDS))))
 
     #client.items.change_multiple_column_values(5015701381,data['event']['value']['linkedPulseIds'][0]['linkedPulseId'],json.loads('{{\"connect_boards1\" : {{\"item_ids\" : {}}}}}'.format([data['event']['pulseId']])))
 
