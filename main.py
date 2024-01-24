@@ -5,8 +5,9 @@ app = FastAPI()
 @app.post("/webhook") #Master Database
 async def root(request: Request):
     data = await request.json()
-    print(data)
-    executer(data)
+    if data['event']['groupId'] != 'leads_':
+        print(data)
+        executer(data)
     return JSONResponse(content=data)
 
 @app.post("/webhook2") #Tax Prep Assignmetns
