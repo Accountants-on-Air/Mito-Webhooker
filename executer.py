@@ -8,7 +8,7 @@ def executer(data): #Master Database
         CONNECTION_IDS = [i['linkedPulseId'] for i in PULSES_DICT]
         CONNECTION_IDS.append(data['event']['pulseId'])
         print(client.items.change_multiple_column_values(5015701381,data['event']['value']['linkedPulseIds'][0]['linkedPulseId'],json.loads('{{\"connect_boards1\" : {{\"item_ids\" : {}}}}}'.format(CONNECTION_IDS))))
-    except KeyError:
+    except:
         print(client.items.change_multiple_column_values(5015701381,data['event']['value']['linkedPulseIds'][0]['linkedPulseId'],json.loads('{{\"connect_boards1\" : {{\"item_ids\" : {}}}}}'.format([data['event']['pulseId']]))))
 
 def executer2(data): #Tax Prep Assignments
