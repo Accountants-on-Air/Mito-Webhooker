@@ -12,4 +12,12 @@ def executer(data): #Master Database
         print(client.items.change_multiple_column_values(5015701381,data['event']['value']['linkedPulseIds'][0]['linkedPulseId'],json.loads('{{\"connect_boards1\" : {{\"item_ids\" : {}}}}}'.format([data['event']['pulseId']]))))
 
 def executer2(data): #Tax Prep Assignments
-    client.items.change_multiple_column_values(1604758265,data['event']['value']['linkedPulseIds'][0]['linkedPulseId'],json.loads('{{\"connect_boards8\" : {{\"item_ids\" : {}}}}}'.format([data['event']['pulseId']])))
+    
+    ITEM = client.items.fetch_items_by_id(data['event']['value']['linkedPulseIds'][0]['linkedPulseId'])
+    try:
+        PULSES_DICT = [json.loads(i['value'])['linkedPulseIds'] for i in ITEM['data']['items'][0]['column_values'] if i['id']=='connect_boards8'][0]
+        CONNECTION_IDS = [i['linkedPulseId'] for i in PULSES_DICT]
+        CONNECTION_IDS.append(data['event']['pulseId'])
+        print(client.items.change_multiple_column_values(1604758265,data['event']['value']['linkedPulseIds'][0]['linkedPulseId'],json.loads('{{\"connect_boards8\" : {{\"item_ids\" : {}}}}}'.format(CONNECTION_IDS))))
+    except:
+        print(client.items.change_multiple_column_values(1604758265,data['event']['value']['linkedPulseIds'][0]['linkedPulseId'],json.loads('{{\"connect_boards8\" : {{\"item_ids\" : {}}}}}'.format([data['event']['pulseId']]))))
